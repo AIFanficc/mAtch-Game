@@ -1,0 +1,778 @@
+/* If you prefer @import inside CSS instead of <link> in HTML, use this at the top: */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap'); */
+
+
+
+/* =====================================
+   GAME MATCH — FINAL POLISHED STYLESHEET
+   ===================================== */
+
+/* -------- Global Layout & Colors -------- */
+:root {
+  --bg: #0a0a10;
+  --card: #151522;
+  --accent: #007bff;
+  --accent-glow: #3399ff;
+  --text: #f8f9fb;
+  --muted: #9ca1b4;
+  --radius: 14px;
+  --transition: all 0.35s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* -------- Navbar -------- */
+header.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(12px);
+  padding: 0.8rem 1.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 12px rgba(0,123,255,0.6);
+}
+
+header.navbar nav {
+  display: flex;
+  gap: 1.4rem;
+}
+
+header.navbar nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+header.navbar nav a:hover {
+  color: var(--accent-glow);
+}
+
+header.navbar nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: var(--accent);
+  transition: 0.3s ease;
+}
+
+header.navbar nav a:hover::after,
+header.navbar nav a.active::after {
+  width: 100%;
+}
+
+/* -------- Hero Section (for all pages) -------- */
+.hero {
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.hero .overlay {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 3rem;
+  border-radius: var(--radius);
+  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.45);
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.hero p {
+  color: #ddd;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* -------- Buttons -------- */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0,123,255,0.4);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* -------- Wrapper -------- */
+.wrapper {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1.2rem;
+}
+
+/* -------- Panels -------- */
+.panel {
+  background: var(--card);
+  padding: 1.8rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease;
+}
+
+/* -------- Parallax Sections -------- */
+.parallax-break {
+  background-image: url("images/parallax1.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.parallax-break::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.parallax-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: var(--accent-glow);
+  text-shadow: 0 0 15px rgba(0,123,255,0.5);
+}
+
+/* -------- Cards -------- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+  transition: var(--transition);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* -------- Grid Layouts -------- */
+.grid {
+  display: grid;
+  gap: 1.4rem;
+}
+.cols-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+.cols-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* -------- Genre Cards -------- */
+.genre-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.genre-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.genre-card:hover img {
+  transform: scale(1.05);
+  opacity: 0.35;
+}
+
+.genre-card .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.genre-card:hover .overlay-text {
+  opacity: 1;
+}
+
+/* -------- About Section -------- */
+.about-content h2 {
+  color: var(--accent-glow);
+  margin-bottom: 0.6rem;
+}
+
+.about-img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* -------- Video Cards -------- */
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.video-card {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* -------- Footer -------- */
+footer {
+  background: #0b0b11;
+  color: var(--muted);
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* -------- Animations -------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.5rem; }
+  .btn { font-size: 0.8rem; }
+  header.navbar nav { gap: 0.9rem; }
+}
+html, body {
+  font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Force form controls to use the same font (browsers sometimes keep defaults) */
+input, button, select, textarea {
+  font: inherit;
+}
+/* ==== FONT SIZE UPGRADE ==== */
+
+/* Global body text */
+body {
+  font-size: 1.1rem; /* slightly larger default */
+  line-height: 1.8;
+}
+
+/* Headings */
+h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+/* Navbar text */
+header.navbar a {
+  font-size: 1rem;
+}
+
+/* Hero section text */
+.hero h1 {
+  font-size: 2.8rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Parallax section text */
+.parallax-content h2 {
+  font-size: 1.6rem;
+}
+.parallax-content p {
+  font-size: 1rem;
+}
+
+/* Card text */
+.card .body {
+  font-size: 1rem;
+}
+
+/* Footer text */
+footer {
+  font-size: 0.95rem;
+}
+/* ===========================
+   FINAL TYPE & COLOR OVERRIDES
+   =========================== */
+
+:root{
+  --fs-900: clamp(2.2rem, 3.5vw + 1rem, 3.25rem);
+  --fs-800: clamp(1.6rem, 2.6vw + .6rem, 2.25rem);
+  --fs-700: clamp(1.25rem, 1.4vw + .75rem, 1.6rem);
+  --fs-600: 1.05rem;
+  --fs-500: .95rem;
+}
+
+html, body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  color: #e9edf5 !important;
+}
+
+/* Headings: strong contrast + scale */
+h1, .panel h1, .hero h1 {
+  font-family: "Poppins", "Inter", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px !important;
+  color: #ffffff !important;
+  font-size: var(--fs-900) !important;
+  line-height: 1.15 !important;
+}
+
+h2, .panel h2, .parallax-content h2 {
+  font-family: "Poppins", "Inter", sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--accent) !important;
+  text-shadow: 0 0 12px rgba(0,123,255,.35);
+  font-size: var(--fs-800) !important;
+  line-height: 1.2 !important;
+  margin-bottom: .35rem !important;
+}
+
+h3, .card h3, .about-content h2 + h3 {
+  font-family: "Poppins", "Inter", sans-serif !important;
+  font-weight: 700 !important;
+  color: #3aa0ff !important;
+  font-size: var(--fs-700) !important;
+}
+
+/* Body text + muted */
+p, .panel p, .hero p, .parallax-content p, .muted {
+  color: #c8cde0 !important;
+  font-size: var(--fs-600) !important;
+}
+
+/* Links in content */
+.wrapper a:not(.btn),
+.panel a:not(.btn) {
+  color: #8ec5ff !important;
+  text-decoration: none;
+}
+.wrapper a:not(.btn):hover,
+.panel a:not(.btn):hover {
+  color: #b7dbff !important;
+  text-decoration: underline;
+}
+
+/* Hero text block readability */
+.hero .overlay {
+  background: rgba(0,0,0,.45) !important;
+  backdrop-filter: blur(3px);
+  border-radius: 14px;
+  padding: 2rem 2.5rem !important;
+}
+
+/* Quiz hero (if using .quiz-hero) */
+.quiz-hero {
+  background: url("images/hero.jpg") center/cover fixed;
+  min-height: 55vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.quiz-hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35));
+}
+.quiz-hero .overlay{ position:relative; z-index:1; }
+
+/* Genre cards: ensure caption readable on hover */
+.genre-card .overlay-text {
+  background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,0));
+  color: #fff !important;
+  font-size: var(--fs-500) !important;
+}
+
+/* Card titles pop */
+.card h3 { color: #58b0ff !important; }
+
+/* Tighten footer text size */
+footer { font-size: .85rem !important; }
+/* ===========================
+   FINAL TYPE & COLOR OVERRIDES — RED & BLACK THEME
+   =========================== */
+
+:root{
+  --accent: #ff2727;           /* bright red */
+  --accent-glow: #ff5050;      /* softer red glow */
+  --bg: #0a0a0a;
+  --card: #141414;
+}
+
+html, body {
+  font-family: "Poppins", "Inter", sans-serif !important;
+  background: var(--bg) !important;
+  color: #f2f2f2 !important;
+}
+
+/* --- Headings --- */
+h1, .panel h1, .hero h1 {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 800 !important;
+  color: #ff3b3b !important;
+  text-shadow: 0 0 14px rgba(255,0,0,0.4);
+  font-size: clamp(2.2rem, 3vw + 1rem, 3rem);
+  margin-bottom: .6rem !important;
+}
+
+h2, .panel h2, .parallax-content h2 {
+  color: var(--accent-glow) !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.5rem, 2.5vw + .5rem, 2.2rem);
+  text-shadow: 0 0 10px rgba(255,0,0,0.35);
+  margin-bottom: .4rem !important;
+}
+
+h3, .card h3 {
+  color: #ff5555 !important;
+  font-weight: 600 !important;
+}
+
+/* --- Paragraphs --- */
+p, .panel p, .hero p, .parallax-content p, .muted {
+  color: #d3d3d3 !important;
+  font-size: 1rem !important;
+  line-height: 1.6;
+}
+
+/* --- Navbar --- */
+header.navbar {
+  background: rgba(10,10,10,0.92) !important;
+  border-bottom: 1px solid rgba(255,30,30,0.2) !important;
+}
+header.navbar a {
+  color: #f1f1f1 !important;
+  transition: color .3s ease;
+}
+header.navbar a:hover {
+  color: #ff4040 !important;
+}
+header.navbar a.active {
+  color: #ff3b3b !important;
+}
+.logo {
+  color: #ff2e2e !important;
+  text-shadow: 0 0 15px rgba(255,0,0,0.4);
+}
+
+/* --- Buttons --- */
+.btn {
+  background: linear-gradient(145deg, #ff2727, #d00000) !important;
+  box-shadow: 0 0 25px rgba(255,40,40,0.4);
+  border: none;
+}
+.btn:hover {
+  background: linear-gradient(145deg, #ff4444, #d60000) !important;
+  transform: translateY(-2px);
+}
+
+/* --- Hero & Quiz Hero --- */
+.hero, .quiz-hero {
+  background: url("images/hero.jpg") center/cover fixed !important;
+  color: #fff;
+}
+.hero::before, .quiz-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.55));
+}
+.hero .overlay, .quiz-hero .overlay {
+  background: rgba(20,20,20,0.6);
+  border: 1px solid rgba(255,0,0,0.25);
+  box-shadow: 0 0 20px rgba(255,0,0,0.2);
+}
+
+/* --- Parallax Section --- */
+.parallax-break {
+  background-image: url("images/parallax1.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 55vh;
+}
+.parallax-break::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+.parallax-content h2 {
+  color: #ff4a4a !important;
+  text-shadow: 0 0 18px rgba(255,60,60,0.5);
+}
+.parallax-content p {
+  color: #e4e4e4;
+}
+
+/* --- Cards --- */
+.card {
+  background: var(--card);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255,0,0,0.35);
+}
+.card h3 { color: #ff4c4c; }
+
+/* --- Footer --- */
+footer {
+  background: #0b0b0b !important;
+  border-top: 1px solid rgba(255,50,50,0.2);
+  color: #b4b4b4 !important;
+}
+footer a { color: #ff4d4d !important; }
+
+/* --- Links --- */
+a {
+  color: #ff4d4d;
+}
+a:hover {
+  color: #ff7878;
+}
+
+/* --- Misc readability fixes --- */
+.panel {
+  border: 1px solid rgba(255,0,0,0.1);
+}
+/* ===== NAVBAR LAYOUT FIX (forces horizontal row on every page) ===== */
+header.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;                      /* key: make the header a flex container */
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(10,10,10,0.92);
+  border-bottom: 1px solid rgba(255,30,30,0.2);
+}
+
+header.navbar .logo{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #ff2e2e;
+  text-shadow: 0 0 15px rgba(255,0,0,0.4);
+}
+
+header.navbar nav{
+  display: flex;                      /* key: horizontal links */
+  align-items: center;
+  gap: 22px;
+}
+
+header.navbar nav a{
+  display: inline-flex;               /* prevents full-width block anchors */
+  align-items: center;
+  color: #f1f1f1;
+  text-decoration: none;              /* remove default underline */
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: color .25s ease, background .25s ease;
+}
+
+header.navbar nav a:hover{
+  color: #ff4040;
+}
+
+header.navbar nav a.active{
+  color: #ff3b3b;
+}
+
+/* Responsive: keep it tidy on phones */
+@media (max-width: 720px){
+  header.navbar{
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  header.navbar nav{
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+/* ---- HERO VISIBILITY & BUTTON FIX ---- */
+.hero, 
+.quiz-hero {
+  position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 0;
+}
+
+.hero .overlay,
+.quiz-hero .overlay {
+  position: relative;
+  z-index: 2; /* allow clicking */
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  color: #ff3b3b; /* bright red text */
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* ensure background stays behind */
+.hero::before,
+.quiz-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* HERO TEXT */
+.hero h1, 
+.quiz-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ff2e2e;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero p,
+.quiz-hero p {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+/* BUTTON FIX */
+.hero .btn,
+.quiz-hero .btn,
+.hero .overlay button,
+.quiz-hero .overlay button {
+  background: linear-gradient(90deg, #ff0000, #a60000);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero .btn:hover,
+.quiz-hero .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+}

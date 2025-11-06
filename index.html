@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameMatch — Find Your Perfect Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sticky Modern Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">🎮 GameMatch</a>
+    <nav>
+      <a class="active" href="index.html">Home</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="types.html">Game Types</a>
+      <a href="videos.html">Videos</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Parallax Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h1>Discover Your Next Favorite Game</h1>
+      <p>Answer a few quick questions — we’ll find your perfect match.</p>
+      <a href="quiz.html" class="btn">Take the Quiz</a>
+    </div>
+  </section>
+<section class="parallax-break">
+  <div class="parallax-content">
+    <h2>Play Smarter, Not Harder</h2>
+    <p>We match you to games that actually fit you — not just whatever’s trending.</p>
+  </div>
+</section>
+  <!-- Features Overview -->
+  <main class="wrapper">
+    <section class="intro">
+      <h2>Why Use GameMatch?</h2>
+      <p>There are thousands of games — but which one truly fits <em>you</em>?  
+      GameMatch helps you explore, compare, and discover titles based on your mood, genre, and platform preferences.</p>
+    </section>
+
+    <section class="features grid cols-3">
+      <div class="feature">
+        <img src="hero.jpg" alt="Controller">
+        <h3>Tailored Recommendations</h3>
+        <p>Our smart quiz uses real-time filtering to suggest games that fit your exact playstyle and skill level.</p>
+      </div>
+
+      <div class="feature">
+        <img src="hero.jpg" alt="Game Library">
+        <h3>Massive Library</h3>
+        <p>Over 100+ of the most popular modern games across PC, PlayStation, Xbox, Switch, and Mobile.</p>
+      </div>
+
+      <div class="feature">hero.jpg
+        <img src="images/teamplay.jpg" alt="Multiplayer">
+        <h3>For Every Player</h3>
+        <p>Whether you prefer casual mobile fun or hardcore action, GameMatch connects you to your next obsession.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 GameMatch. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Sticky Navbar Scroll Effect
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector(".navbar");
+      nav.classList.toggle("scrolled", window.scrollY > 80);
+    });
+  </script>
+ <!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero" style="background-image: url('images/hero.jpg');">
+  <div class="overlay">
+    <h1>Game Finder Quiz</h1>
+    <p>Answer a few quick questions and we’ll recommend games for your playstyle.</p>
+  </div>
+</section>
+
+
+</body>
+</html>

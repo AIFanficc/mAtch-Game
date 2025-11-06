@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameMatch – Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">🎮 GameMatch</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a class="active" href="quiz.html">Quiz</a>
+      <a href="types.html">Game Types</a>
+      <a href="videos.html">Videos</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="quiz-hero">
+    <div class="overlay">
+      <h1>Game Finder Quiz</h1>
+      <p>Answer a few quick questions and we’ll recommend games that match your playstyle and platform.</p>
+    </div>
+  </section>
+
+  <!-- Parallax Section -->
+  <section class="parallax-break" style="background-image: url('images/parallax1.jpg');">
+    <div class="parallax-content">
+      <h2>Answer a Few Questions</h2>
+      <p>We’ll automatically filter our 100+ game library to find your perfect match.</p>
+    </div>
+  </section>
+
+  <!-- Quiz Form -->
+  <main class="wrapper">
+    <section class="panel quiz-panel">
+      <form id="quizForm" class="quiz-form">
+        <h2 class="section-title">🎯 Take the Quiz</h2>
+
+        <div class="grid cols-2">
+          <div>
+            <label for="genre">Preferred Genre</label>
+            <select id="genre">
+              <option value="action">Action</option>
+              <option value="strategy">Strategy</option>
+              <option value="story">Story</option>
+              <option value="simulation">Simulation</option>
+              <option value="casual">Casual</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="playstyle">Playstyle</label>
+            <select id="playstyle">
+              <option value="solo">Solo</option>
+              <option value="coop">Co-op</option>
+              <option value="competitive">Competitive</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="platform">Platform</label>
+            <select id="platform">
+              <option value="pc">PC</option>
+              <option value="playstation">PlayStation</option>
+              <option value="xbox">Xbox</option>
+              <option value="switch">Switch</option>
+              <option value="mobile">Mobile</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn quiz-btn">Find My Games</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 GameMatch</p>
+  </footer>
+
+  <script>
+  document.getElementById("quizForm").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const genre = document.getElementById("genre").value;
+    const playstyle = document.getElementById("playstyle").value;
+    const platform = document.getElementById("platform").value;
+    const difficulty = document.getElementById("difficulty").value;
+
+    fetch("games.json")
+      .then(res => res.json())
+      .then(games => {
+        const matches = games.filter(g =>
+          g.genre === genre &&
+          g.mode === playstyle &&
+          g.platform === platform &&
+          g.difficulty === difficulty
+        );
+        localStorage.setItem("quizResults", JSON.stringify(matches.slice(0, 10)));
+        window.location.href = "results.html";
+      });
+  });
+  </script>
+
+</body>
+</html>

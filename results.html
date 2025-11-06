@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameMatch – Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">🎮 GameMatch</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="types.html">Game Types</a>
+      <a href="videos.html">Videos</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Results Header -->
+  <section class="results-hero">
+    <div class="overlay">
+      <h1>Your Game Recommendations</h1>
+      <p>Here are the games that best match your answers.</p>
+    </div>
+  </section>
+
+  <!-- Results Content -->
+  <main class="wrapper">
+    <section id="resultsContainer" class="grid cols-3 results-grid">
+      <p style="text-align:center; color:#bbb;">Loading your matches...</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 GameMatch. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Load and render results dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      const mount = document.getElementById("resultsContainer");
+      const stored = localStorage.getItem("quizResults");
+      const results = stored ? JSON.parse(stored) : [];
+
+      if (results.length === 0) {
+        mount.innerHTML = `<p style="text-align:center;margin-top:2rem;">No matches found.<br>Try again on the <a href='quiz.html'>quiz page</a>.</p>`;
+        return;
+      }
+
+      const cards = results.map(g => `
+        <article class="card">
+          <img src="${g.img}" alt="${g.name}">
+          <div class="body">
+            <h3>${g.name}</h3>
+            <p class="muted">${g.genre} • ${g.platform}</p>
+            <div>
+              <span class="badge">${g.mode}</span>
+              <span class="badge">${g.difficulty}</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      mount.innerHTML = cards;
+    });
+  </script>
+  <section class="hero" style="background-image: url('images/parallax1.jpg');">
+  <div class="overlay">
+    <h1>Game Finder Quiz</h1>
+    <p>Answer a few quick questions and we’ll recommend games for your playstyle.</p>
+  </div>
+</section>
+</body>
+</html>
